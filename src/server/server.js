@@ -44,9 +44,9 @@ app.get('/getData', function(req, res) {
 app.post('/', function(req, res) {
     let newData = req.body;
     let newEntry = {
-        temperature: newData.temperature,
-        date: newData.date,
-        userResponse: newData.userResponse
+        latitude: newData.latitude,
+        longtitude: newData.longtitude,
+        country: newData.country
     }
     Object.assign(projectData, newEntry);
 })

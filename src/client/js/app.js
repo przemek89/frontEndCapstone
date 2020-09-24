@@ -1,14 +1,14 @@
 /* Global Variables */
-let zip_code;
-const api_key = 'd00c322fdf629b33b42279052c8f1710&units=imperial';
-let url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},CH&appid=${api_key}`;
+let city;
+const username = 'przemzbik';
+let url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
 
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Async GET request to OWM API
-const getData = async (url) => {
+const getDataGeonames = async (url) => {
     const res = await fetch(url)
     try {
         const data = await res.json();
@@ -56,20 +56,20 @@ const updateUI = async () => {
 }
 
 function getWeatherData() {
-    zip_code = document.querySelector('#zip').value;
+    city = document.querySelector('#city').value;
     let userResponse = document.getElementById('feelings').value;
-    url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},CH&appid=${api_key}`;
-    getData(url)
+    url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
+    getDataGeonames(url)
         .then(function(data){
-            postData('http://localhost:8000/', {temperature:data.main.temp, date:newDate, userResponse:userResponse})
+            postData('http://localhost:8000/', {latitude: data.geonames[0].lat, longtitude: data.geonames[0].lng, country: data.geonames[0].countryName})
                 .then(
                     updateUI().then(
                         function(data) {
                             try {
                                 // select elements in the HTML and update its content
-                                document.getElementById('date').innerHTML = data.date;
-                                document.getElementById('temp').innerHTML = data.temperature;
-                                document.getElementById('content').innerHTML = data.userResponse
+                                document.getElementById('latitude').innerHTML = data.latitude;
+                                document.getElementById('longtitude').innerHTML = data.longtitude;
+                                document.getElementById('country').innerHTML = data.country
                             } catch(error) {
                                 console.log('error', error);
                             }
