@@ -19,7 +19,7 @@ const { setTimeout } = require('timers');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 // Setup Server
 
@@ -30,6 +30,10 @@ function listening() {
     console.log('server running');
     console.log(`running on localhost: ${port}`);
 }
+
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html')
+})
 
 // GET route, which returns the projectData
 app.get('/getData', function(req, res) {

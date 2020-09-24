@@ -55,12 +55,7 @@ const updateUI = async () => {
     }
 }
 
-// event listener for Generate button
-// select the generate button element
-const generateButton = document.querySelector('#generate');
-
-// add event listener for generate button
-generateButton.addEventListener('click', function getWeatherData() {
+function getWeatherData() {
     zip_code = document.querySelector('#zip').value;
     let userResponse = document.getElementById('feelings').value;
     url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip_code},CH&appid=${api_key}`;
@@ -81,4 +76,6 @@ generateButton.addEventListener('click', function getWeatherData() {
                         })
                 )
             })
-})
+};
+
+export { getWeatherData }
