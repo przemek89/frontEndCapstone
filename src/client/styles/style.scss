@@ -61,6 +61,10 @@ h1 {
     flex-direction: column;
 }
 
+.departureDate:hover {
+    box-shadow: 2px 4px 5px rgb(0, 10, 90);
+}
+
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:flex;
@@ -87,6 +91,10 @@ input{
     margin: 0.5rem;
 }
 
+input:hover {
+    box-shadow: 2px 4px 5px rgb(0, 10, 90);
+}
+
 .myInput {
     padding: 1rem;
 }
@@ -103,6 +111,10 @@ button{
     margin: 0.5rem;
 }
 
+button:hover {
+    box-shadow: 2px 4px 5px rgb(0, 10, 90);
+}
+
 textarea{
     background: rgb(245,245,245);
     color: #111111;
@@ -111,6 +123,11 @@ textarea{
     box-shadow: 2px 4px 5px #444;
     margin: 0.5rem;
 }
+
+textarea:hover {
+    box-shadow: 2px 4px 5px rgb(0, 10, 90);
+}
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
