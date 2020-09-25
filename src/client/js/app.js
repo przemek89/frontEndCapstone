@@ -2,6 +2,8 @@
 let city;
 const username = 'przemzbik';
 let url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
+const wheaterbitAPIKey = 'f47d98058eed419c8e975bd956377b49';
+const pixabayAPIKey = '17804428-d164599a2217e2ac0e267fab4';
 
 // calculate countdown till departure
 function countdown(event) {
