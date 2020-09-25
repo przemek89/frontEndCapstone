@@ -47,7 +47,6 @@ app.post('/', function(req, res) {
         latitude: newData.latitude,
         longtitude: newData.longtitude,
         country: newData.country,
-        date: newData.date ,
         city: newData.city
     }
     Object.assign(projectData, newEntry);
