@@ -61,12 +61,14 @@ function getWeatherData() {
     url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
     getDataGeonames(url)
         .then(function(data){
-            postData('http://localhost:8000/', {latitude: data.geonames[0].lat, longtitude: data.geonames[0].lng, country: data.geonames[0].countryName})
+            postData('http://localhost:8000/', {latitude: data.geonames[0].lat, longtitude: data.geonames[0].lng, country: data.geonames[0].countryName, date: newDate, city: city})
                 .then(
                     updateUI().then(
                         function(data) {
                             try {
                                 // select elements in the HTML and update its content
+                                document.getElementById('date').innerHTML = data.latitude;
+                                document.getElementById('city').innerHTML = data.longtitude;
                                 document.getElementById('latitude').innerHTML = data.latitude;
                                 document.getElementById('longtitude').innerHTML = data.longtitude;
                                 document.getElementById('country').innerHTML = data.country
