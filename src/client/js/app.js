@@ -83,12 +83,16 @@ function getWeatherData() {
     city = document.querySelector('#city').value;
     let userResponse = document.getElementById('feelings').value;
     url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${username}`;
+    // data needed to call pixabay API
+    let cityEncoded = encodeURI(city);
+    const pixabayURI = `https://pixabay.com/api/?key=${pixabayAPIKey}&q=${cityEncoded}&category=travel&image_type=photo`
     countdown();
     getDataGeonames(url)
         .then(function(data){
             postData('http://localhost:8000/', {latitude: data.geonames[0].lat, longtitude: data.geonames[0].lng, country: data.geonames[0].countryName, city: city})
                 .then(
-                    updateUI().then(
+                    getWeatherbitData().then(
+                        callPixabay().then(
                         function(data) {
                             try {
                                 // select elements in the HTML and update its content
@@ -100,8 +104,9 @@ function getWeatherData() {
                                 console.log('error', error);
                             }
                         })
+                    )
                 )
-            })
+        })
 };
 
 export { getWeatherData }
