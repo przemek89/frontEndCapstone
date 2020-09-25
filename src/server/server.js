@@ -51,3 +51,13 @@ app.post('/', function(req, res) {
     }
     Object.assign(projectData, newEntry);
 })
+
+app.post('/postWeatherbit', function(req, res) {
+    let newData = req.body;
+    projectData = projectData.map(v => ({...v, temp: newData.temp, description: newData.description}))
+})
+
+app.post('/postWeatherbit', function(req, res) {
+    let newData = req.body;
+    projectData = projectData.map(v => ({...v, image: newData.image}))
+})
