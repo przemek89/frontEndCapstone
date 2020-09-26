@@ -11,10 +11,8 @@ This is the Capstone project of Udacity Front end Web Developer Nanodegree Progr
 ## Contents
 
 - [Overview](#overview)
-- [Instructions](#instructions)
-- [Extras](#extras)
-- [Running the Project](#running-the-project)
-- [Weather Journal App](#weather-journal-app)
+- [Public APIs used](#public-APIs-used)
+- [How to](#How-to)
 
 ### Overview
 
